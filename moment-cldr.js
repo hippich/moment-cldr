@@ -7,9 +7,20 @@
 /*jshint -W015 */
 ;(function (undefined) {
 /*jshint +W015 */
-    // TODO(discuss): pass Zone to globalizeDate.format
-    // TODO: fillIn in globalize
-    // TODO: Does our lang abbreviation play well with cldr's?
+    // Critical
+    // * Does our lang abbreviation play well with cldr's?
+    // * (external): unimplemented globalize.plural
+    // http://www.unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules
+    // * fillIn in globalize
+    //
+    // Normal
+    // * (external): pass Zone to globalizeDate.format
+    // * Use globalize to format floats
+    // * Put makeAs in moment (export it)
+    // * float -> 2 digits only if necessary
+    //
+    // TODO: Week diff
+    // Other
     // TODO: Check date/tokenizer.js or implement our own tokenizer
     // TODO: Implement format building by algo
     // * Split into date tokens, time tokens and additional ones (check
@@ -22,14 +33,8 @@
     // * Extract tokens from format
     // * Use predefined
     // * Try to parse
-    // TODO: float -> 2 digits only if necessary
     // TODO: implement smallFloat -> float only if abs < 1
     // TODO: imply smallFloat with min
-    // TODO: unimplemented globalize.plural
-    // http://www.unicode.org/reports/tr35/tr35-numbers.html#Language_Plural_Rules
-    // TODO: moment vs cldr languages
-    // TODO: Use globalize to format floats
-    // TODO: Put makeAs in moment (export it)
     function factory(moment, Cldr, globalizeDate) {
         // console.log("got moment", moment);
         // console.log("got cldr", cldr);
@@ -375,7 +380,6 @@
                 options = extendMany({}, default_options, options);
 
                 if (options.lang == null) {
-                    // TODO: moment vs cldr languages
                     options.lang = moment.lang();
                 }
 
