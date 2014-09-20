@@ -4,8 +4,8 @@
   "description": "moment.js plugin that uses cldr data for localization",
   "dependencies": {
     "moment": "2.5.1",
-    "cldr.js": "0.3.0",
-    "globalize": "git+http://github.com/jquery/globalize.git#a18e17e95cd98501f448963bbae7f91824556452"
+    "cldrjs": "0.3.8",
+    "globalize": "1.0.0-alpha.6"
   },
   "keywords": [
     "moment",

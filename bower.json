@@ -5,7 +5,7 @@
     "test"
   ],
   "dependencies": {
-    "cldr.js": "0.3.0",
-    "globalize": "1.0.0-pre"
+    "cldrjs": "0.3.8",
+    "globalize": "1.0.0-alpha.6"
   }
 }
