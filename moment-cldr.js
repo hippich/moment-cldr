@@ -184,7 +184,7 @@
 
             return function (moment, args) {
                 var tokens = extractTokens(args[0]),
-                    lang = args[1] ? args[1] : moment.lang(),
+                    lang = args[1] ? args[1] : moment.localeData(),
                     fmt = buildFormat(tokens, lang);
 
                 return cldrFormat(fmt, moment.toDate(), lang);
@@ -195,7 +195,7 @@
             var date, time, junction,
                 date_variant, time_variant, junction_variant,
                 fmt,
-                lang = options.lang ? options.lang : moment.lang(),
+                lang = options.lang ? options.lang : moment.localeData(),
                 cldrPath = 'cldr/main/{languageId}/dates/calendars/gregorian/';
 
             if (options.datetime) {
