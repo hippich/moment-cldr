@@ -2,10 +2,37 @@
   "name": "moment-cldr",
   "version": "0.0.1",
   "ignore": [
+    "test",
+    "**/.*",
+    "node_modules",
+    "bower_components",
     "test"
   ],
   "dependencies": {
     "cldrjs": "0.3.8",
     "globalize": "1.0.0-alpha.6"
-  }
+  },
+  "main": "moment-cldr.js",
+  "homepage": "https://github.com/hippich/moment-cldr",
+  "authors": [
+    "Iskren Ivov Chernev <iskren.chernev@gmail.com>",
+    "Rafael Xavier de Souza <rxaviers@gmail.com>",
+    "Pavel Karoukin <pavel@karoukin.us>"
+  ],
+  "description": "moment.js plugin that uses cldr data for localization",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "moment",
+    "moment.js",
+    "date",
+    "time",
+    "cldr",
+    "localization",
+    "l10n"
+  ],
+  "license": "MIT"
 }
