@@ -30,10 +30,7 @@
     // TODO: moment vs cldr languages
     // TODO: Use globalize to format floats
     // TODO: Put makeAs in moment (export it)
-    function factory(moment, Cldr, globalize) {
-        // console.log("got moment", moment);
-        // console.log("got cldr", cldr);
-        // console.log("got globalize", globalize);
+    function factory(moment, Cldr, Globalize) {
 
         var normalizeLength,  /* defined later */
             tokenFormat,  /* defined later */
@@ -137,7 +134,8 @@
         }());
 
         function cldrFormat(fmt, date, locale) {
-            return globalize.formatDate(date, {pattern: fmt}, locale);
+            var formatter = new Globalize(locale);
+            return formatter.formatDate(date, { pattern: fmt });
         }
 
         function fillIn(fmt) {
@@ -184,7 +182,7 @@
 
             return function (moment, args) {
                 var tokens = extractTokens(args[0]),
-                    lang = args[1] ? args[1] : moment.localeData(),
+                    lang = args[1] ? args[1] : moment.localeData()._abbr,
                     fmt = buildFormat(tokens, lang);
 
                 return cldrFormat(fmt, moment.toDate(), lang);
@@ -195,7 +193,7 @@
             var date, time, junction,
                 date_variant, time_variant, junction_variant,
                 fmt,
-                lang = options.lang ? options.lang : moment.localeData(),
+                lang = options.lang ? options.lang : moment.localeData()._abbr,
                 cldrPath = 'cldr/main/{languageId}/dates/calendars/gregorian/';
 
             if (options.datetime) {
@@ -369,6 +367,7 @@
             // behavior)
             var default_options = {
                 time: 'short',
+                relativeTo: new Date()
             };
 
             function processOptions(options) {
@@ -433,8 +432,8 @@
 
                 options = processOptions(options);
 
-                date = detectDayDifference(moment(), m, options) ||
-                    detectWeekDifference(moment(), m, options);
+                date = detectDayDifference(moment(options.relativeTo), m, options) ||
+                    detectWeekDifference(moment(options.relativeTo), m, options);
 
                 if (date) {
                     if (options.time === false) {
@@ -442,7 +441,7 @@
                     }
 
                     return combineDateTime(date,
-                            m.cldr_human({time: options.time}), options.lang);
+                            m.cldr_human({ time: options.time, lang: options.lang }), options.lang);
                 }
 
                 return m.human({date: 'medium', time: options.time});
@@ -459,7 +458,7 @@
     if (typeof define === 'function' && define.amd) {
         define('moment-cldr', ['moment', 'cldr', 'globalize', 'globalize/date'], factory);
     } else if (typeof module !== 'undefined') {
-        module.exports = factory(require('moment'), require('cldr.js'), require('globalize'));
+        module.exports = factory(require('moment'), require('cldrjs'), require('globalize'));
     } else if (typeof window !== 'undefined' && window.moment && window.Cldr && window.Globalize) {
         factory(window.moment, window.Cldr, window.Globalize.Date);
     }

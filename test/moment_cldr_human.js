@@ -1,6 +1,6 @@
 var chai = require('chai'),
     moment = require('../moment-cldr'),
-    Cldr = require('cldr.js'),
+    Cldr = require('cldrjs'),
     fs = require('fs');
 
 chai.should();
@@ -10,6 +10,7 @@ describe("moment#cldr_human", function() {
         Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/ca-gregorian.json')));
         Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/dateFields.json')));
         Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/units.json')));
+        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/likelySubtags.json')));
     });
 
     beforeEach(function() {
