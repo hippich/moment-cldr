@@ -4,9 +4,8 @@
 //! license : MIT
 //! momentjs.com
 
-/*jshint -W015 */
+/*jshint -W015, -W013, -W098 */
 ;(function (undefined) {
-/*jshint +W015 */
     // Critical
     // * Does our lang abbreviation play well with cldr's?
     // * (external): unimplemented globalize.plural
@@ -38,6 +37,7 @@
     function factory(moment, Cldr, Globalize) {
 
         var normalizeLength,  /* defined later */
+            normalizeUnits, /* defined later */
             tokenFormat,  /* defined later */
             durationFormat,  /* defined later */
             calendar,  /* defined later */
@@ -311,7 +311,7 @@
                     unit = duration_units[i];
                     amount = Math.abs(duration.as(unit));
                     if (i === end_i || amount < options.cutoff[unit]) {
-                        amount = options['float'] ?
+                        amount = options.float ?
                             amount : Math.round(amount);
                         return [unit, amount];
                     }
@@ -325,7 +325,7 @@
                     cldr_path = 'cldr/main/{languageId}/units/' + options.length +
                             '/duration-' + unitAmount[0] + '/unitPattern-count-' + amount_category,
                     fmt = cldrGet(options.lang, cldr_path),
-                    amount_str = options['float'] ?
+                    amount_str = options.float ?
                         unitAmount[1].toFixed(2) : unitAmount[1].toString();
 
                 return fillIn(fmt, amount_str);
@@ -342,8 +342,8 @@
                             'fields/' + unitAmount[0] + '/' +
                             'relativeTime-type-' + future_past + '/' +
                             'relativeTimePattern-count-' + amount_category;
-                    fmt = cldrGet(options.lang, cldr_path);
-                    amount_str = options['float'] ?
+                var fmt = cldrGet(options.lang, cldr_path);
+                var amount_str = options.float ?
                         unitAmount[1].toFixed(2) : unitAmount[1].toString();
 
                 return fillIn(fmt, amount_str);

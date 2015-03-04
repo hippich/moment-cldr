@@ -13,6 +13,9 @@
 	"unused": true,
         "white": true,
 	"globals": {
-		"define": false
+		"define": false,
+        "window": false,
+        "require": false,
+        "module": false
 	}
 }
