@@ -284,7 +284,7 @@
 
 
                 if (options.lang == null) {
-                    options.lang = moment.lang();
+                    options.lang = moment.locale();
                 }
 
                 options.min = normalizeUnits(options.min);
@@ -379,7 +379,7 @@
                 options = extendMany({}, default_options, options);
 
                 if (options.lang == null) {
-                    options.lang = moment.lang();
+                    options.lang = moment.locale();
                 }
 
                 return options;

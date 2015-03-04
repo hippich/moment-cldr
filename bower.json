@@ -9,8 +9,8 @@
     "test"
   ],
   "dependencies": {
-    "cldrjs": "0.3.8",
-    "globalize": "1.0.0-alpha.6"
+    "cldrjs": "0.4.1",
+    "globalize": "1.0.0-alpha.17"
   },
   "main": "moment-cldr.js",
   "homepage": "https://github.com/hippich/moment-cldr",
