@@ -1,6 +1,6 @@
 {
   "name": "moment-cldr",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "moment.js plugin that uses cldr data for localization",
   "dependencies": {
     "moment": "2.9.0",
