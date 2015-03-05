@@ -1,6 +1,6 @@
 var chai = require('chai'),
     moment = require('../moment-cldr'),
-    Cldr = require('cldrjs'),
+    Globalize = require('globalize'),
     fs = require('fs');
 
 chai.should();
@@ -9,10 +9,11 @@ describe("duration#cldr_calendar", function() {
     var d = moment.duration;
 
     before(function() {
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/ca-gregorian.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/dateFields.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/units.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/likelySubtags.json')));
+        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/ca-gregorian.json')));
+        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/dateFields.json')));
+        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/units.json')));
+        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/numbers.json')));
+        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/likelySubtags.json')));
     });
 
     it("handles tomorrow", function() {

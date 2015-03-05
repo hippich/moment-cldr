@@ -139,6 +139,7 @@
         }());
 
         function cldrFormat(fmt, date, locale) {
+            debugger;
             var formatter = new Globalize(locale);
             return formatter.formatDate(date, { pattern: fmt });
         }
@@ -154,7 +155,7 @@
         }
 
         function combineDateTime(date, time, lang, junction_variant) {
-            var cldrPath = 'cldr/main/{languageId}/dates/calendars/gregorian/',
+            var cldrPath = 'cldr/main/{bundle}/dates/calendars/gregorian/',
                 junction;
 
             if (junction_variant == null) {
@@ -199,7 +200,7 @@
                 date_variant, time_variant, junction_variant,
                 fmt,
                 lang = options.lang ? options.lang : moment.localeData()._abbr,
-                cldrPath = 'cldr/main/{languageId}/dates/calendars/gregorian/';
+                cldrPath = 'cldr/main/{bundle}/dates/calendars/gregorian/';
 
             if (options.datetime) {
                 options.date = options.time = options.datetime;
@@ -322,7 +323,7 @@
                 var unitAmount = getUnitAndAmount(duration, options),
                     amount_category = getAmountCategory(unitAmount[1],
                             options.lang),
-                    cldr_path = 'cldr/main/{languageId}/units/' + options.length +
+                    cldr_path = 'cldr/main/{bundle}/units/' + options.length +
                             '/duration-' + unitAmount[0] + '/unitPattern-count-' + amount_category,
                     fmt = cldrGet(options.lang, cldr_path),
                     amount_str = options.float ?
@@ -338,7 +339,7 @@
                     amount_category = getAmountCategory(unitAmount[1],
                             options.lang),
                     future_past = (ms >= 0 ? 'future' : 'past'),
-                    cldr_path = 'cldr/main/{languageId}/dates/' +
+                    cldr_path = 'cldr/main/{bundle}/dates/' +
                             'fields/' + unitAmount[0] + '/' +
                             'relativeTime-type-' + future_past + '/' +
                             'relativeTimePattern-count-' + amount_category;
@@ -393,7 +394,7 @@
             function detectDayDifference(anchor, aMoment, options) {
                 var sod = makeAs(anchor, aMoment).startOf('day'),
                     diff = Math.floor(aMoment.diff(sod, 'days', true)),
-                    cldr_path = 'main/{languageId}/dates/fields/' +
+                    cldr_path = 'main/{bundle}/dates/fields/' +
                         'day/relative-type-' + diff;
 
                 return cldrGet(options.lang, cldr_path);
@@ -419,7 +420,7 @@
                     return null;
                 }
 
-                cldr_path = ['main/{languageId}/dates/fields',
+                cldr_path = ['main/{bundle}/dates/fields',
                       weekdays[aMoment.weekday()], 'relative-type-' + diff];
                 return cldrGet(options.lang, cldr_path);
 
@@ -448,7 +449,7 @@
                             m.cldr_human({ time: options.time, lang: options.lang }), options.lang);
                 }
 
-                return m.human({date: 'medium', time: options.time});
+                return m.cldr_human({date: 'medium', time: options.time});
             };
         }());
 
