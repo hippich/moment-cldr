@@ -139,7 +139,6 @@
         }());
 
         function cldrFormat(fmt, date, locale) {
-            debugger;
             var formatter = new Globalize(locale);
             return formatter.formatDate(date, { pattern: fmt });
         }
