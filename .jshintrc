@@ -11,11 +11,11 @@
 	"trailing": true,
 	"undef": true,
 	"unused": true,
-        "white": true,
+	"white": true,
 	"globals": {
 		"define": false,
-        "window": false,
-        "require": false,
-        "module": false
+		"window": false,
+		"require": false,
+		"module": false
 	}
 }

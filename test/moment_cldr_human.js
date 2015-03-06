@@ -8,17 +8,17 @@ chai.should();
 
 describe("moment#cldr_human", function() {
     before(function() {
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/ca-gregorian.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/dateFields.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/units.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/en/numbers.json')));
-        Cldr.load(JSON.parse(fs.readFileSync('test/fixtures/likelySubtags.json')));
+        Cldr.load(require('./fixtures/en/ca-gregorian.json'));
+        Cldr.load(require('./fixtures/en/dateFields.json'));
+        Cldr.load(require('./fixtures/en/units.json'));
+        Cldr.load(require('./fixtures/en/numbers.json'));
+        Cldr.load(require('./fixtures/likelySubtags.json'));
 
-        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/ca-gregorian.json')));
-        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/dateFields.json')));
-        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/units.json')));
-        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/en/numbers.json')));
-        Globalize.load(JSON.parse(fs.readFileSync('test/fixtures/likelySubtags.json')));
+        Globalize.load(require('./fixtures/en/ca-gregorian.json'));
+        Globalize.load(require('./fixtures/en/dateFields.json'));
+        Globalize.load(require('./fixtures/en/units.json'));
+        Globalize.load(require('./fixtures/en/numbers.json'));
+        Globalize.load(require('./fixtures/likelySubtags.json'));
     });
 
     beforeEach(function() {
