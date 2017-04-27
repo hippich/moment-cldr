@@ -1,11 +1,11 @@
 {
   "name": "moment-cldr",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "moment.js plugin that uses cldr data for localization",
   "dependencies": {
-    "moment": "2.9.0",
-    "cldrjs": "0.4.1",
-    "globalize": "1.0.0-alpha.17"
+    "moment": "^2.18.1",
+    "cldrjs": "^0.4.8",
+    "globalize": "^1.2.3"
   },
   "keywords": [
     "moment",
